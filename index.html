@@ -426,6 +426,15 @@
   .scene.active .fx-sub-2 { animation: popIn 1s ease 2.3s both; }
   .scene.active .fx-sign  { animation: popIn 1s ease 2.9s both; }
   .scene.active .fx-btn   { animation: popIn 1s ease 3.5s both; }
+
+  /* Touch Ripple Feedback Effect */
+  .ripple {
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    margin-left: -7px;
+    margin-top: -7px;
+    border-radius: 50%;
     background: radial-gradient(circle, rgba(244,217,177,0.7), transparent 70%);
     pointer-events: none;
     z-index: 99;
@@ -509,7 +518,7 @@
       <!-- Photo Frame Container -->
       <div class="photo-frame-wrapper">
         <div class="photo-frame">
-          <img src="parents.jpg" alt="Анашым, әкешім" id="parentsPhoto" onerror="handleImageError(this)">
+          <img src="IMG-20260425-WA0000.jpg" alt="Анашым, әкешім" id="parentsPhoto" onerror="handleImageError(this)">
           <div class="photo-fallback" id="photoFallback">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
@@ -535,7 +544,14 @@
 (function() {
   "use strict";
 
-  var fallbackSources = ['parents.jpg', '1000087423.jpg', '1000087423_2.jpg', 'photo.jpg', 'parents.png'];
+  var fallbackSources = [
+    'IMG-20260425-WA0000.jpg',
+    'parents.jpg',
+    '1000087423.jpg',
+    '1000087423_2.jpg',
+    'photo.jpg',
+    'parents.png'
+  ];
   var currentImgIdx = 0;
 
   window.handleImageError = function(img) {
@@ -604,13 +620,6 @@
       next();
     });
   });
-
-  /* Image Fallback Handler */
-  window.handleImageError = function(img) {
-    img.style.display = 'none';
-    var fallback = document.getElementById('photoFallback');
-    if (fallback) fallback.style.display = 'flex';
-  };
 
   /* Ambient Fireflies and Rose Petals */
   function createFireflies(count) {
